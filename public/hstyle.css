@@ -1,0 +1,79 @@
+/* body {
+    /* Set background image */
+/* background-image: url("texture1.jpg"); */
+/* Set background image to cover entire viewport */
+/* background-size: cover; */
+/* Center the background image */
+/* background-position: center; */
+/* }  */
+
+
+
+h3 {
+    color: rgb(0, 110, 101);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+/* Style the body as a flex container with column direction */
+body {
+    display: flex;
+    flex-direction: column;
+    /* background-image: url(texture2.jpg);
+    background-repeat:repeat-x;
+    background-size: cover;
+    backdrop-filter: blur(10px);
+    opacity: 0.5%; */
+
+}
+
+/* Push the footer to the bottom of the page */
+footer {
+    margin-top: auto;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 500px;
+    /* Adjust the maximum width of the form as needed */
+}
+
+.form-floating input {
+    width: 100%;
+}
+
+
+li {
+    display: inline-block;
+    /* Display items horizontally */
+    margin-right: 10px;
+    /* Add some spacing between items */
+}
+
+
+
+.b-example-divider1{
+    width: 100%;
+    height: 35rem;
+    background-color: rgba(143, 227, 248, 0.212);
+    border: solid rgba(0, 202, 252, 0.144);
+    border-width: 1px 0;
+    box-shadow: inset 0 0.5em 1.5em rgba(159, 214, 236, 0.1), inset 0 0.125em 0.5em rgba(0, 0, 0, .15);
+}
+
+.btn:hover,
+      .btn:focus {
+        color: rgba(255, 255, 255, 0.973);
+        background-color: #d2f4ea54;
+      }
+
+      .btn {
+        padding: .25rem .5rem;
+        font-weight: 600;
+        color: rgb(15, 13, 13);
+        background-color: transparent;
+      }

@@ -1,0 +1,82 @@
+.container1 {
+    width: 100%;
+    /* height: 35rem; */
+    background-color: rgba(143, 227, 248, 0.212);
+    border: solid rgba(0, 202, 252, 0.144);
+    border-width: 1px 0;
+    box-shadow: inset 0 0.5em 1.5em rgba(159, 214, 236, 0.1), inset 0 0.125em 0.5em rgba(0, 0, 0, .15);
+}
+
+h1 {
+    color: #fafafa;
+    text-align: center;
+    margin: 20px;
+}
+
+h2{
+    text-align: center;
+    margin: 20px;
+    margin-bottom: 30px;
+}
+
+.lead{
+    color:  black;
+    text-align: center;
+}
+
+li {
+    display: inline-block;
+    /* Display items horizontally */
+    margin-right: 10px;
+    /* Add some spacing between items */
+}
+
+footer {
+    margin-top: auto;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+/* Style the body as a flex container with column direction */
+body {
+    display: flex;
+    flex-direction: column;
+    background-image: url(aboutbg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(8px);
+    /* opacity: 10px; */
+}
+
+circle{
+
+    display: inline-block;
+}
+
+
+.b-example-divider {
+    width: 100%;
+    height: 45rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, .1), inset 0 0.125em 0.5em rgba(0, 0, 0, .15);
+}
+
+.btn:hover,
+.btn:focus {
+  color: rgba(255, 255, 255, 0.973);
+  background-color: #149696;
+}
+
+.btn {
+  padding: .25rem .5rem;
+  font-weight: 600;
+  color: rgb(15, 13, 13);
+  background-color: transparent;
+  border-color: #149696;
+  align-items: center;
+}
