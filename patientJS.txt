@@ -1,0 +1,130 @@
+// Function to load content dynamically
+function loadContentU(page) {
+    fetch(`/${page}`)
+        .then(response => response.json())
+        .then(data => {
+            // Generate HTML for the patients table
+            const tableHtmlU = generateUserTable(data);
+            // Append the table HTML to the content area
+            document.getElementById("users-table").innerHTML = tableHtmlU;
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+
+//   Function to generate HTML for the patients table
+  function generateUserTable(data) {
+    let tableHtmlU = '<table border="1">';
+    // Create table header
+    // tableHtml += '<thead><tr><th>#</th><th>First Name</th><th>Last Name</th><th>Age</th><th>Gender</th></tr></thead>';
+
+    tableHtmlU += '<thead><tr><th scope="col">#</th><th scope="col">Username</th><th scope="col">Password</th><th scope="col">Usertype</th></tr></thead>';
+
+    // Create table body with patient data
+    tableHtmlU += '<tbody>';
+    data.forEach((user, index) => {
+      tableHtmlU += `<tr><td>${index + 1}</td><td>${user.Username}</td><td>${user.Password}</td><td>${user.Usertype}</td></tr>`;
+    });
+    tableHtmlU += '</tbody></table>';
+    return tableHtmlU;
+  }
+
+
+
+
+
+
+
+
+// Function to load content dynamically
+function loadContentP(page) {
+    fetch(`/${page}`)
+        .then(response => response.json())
+        .then(data => {
+            // Generate HTML for the patients table
+            const tableHtml = generatePatientsTable(data);
+            // Append the table HTML to the content area
+            document.getElementById("patients-table").innerHTML = tableHtml;
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function generatePatientsTable(data) {
+let tableHtml = '<table border="1">\n';
+// Create table header
+tableHtml += '  <thead>\n'
+tableHtml += '    <tr>\n'
+tableHtml += '      <th scope="col">#</th>\n'
+tableHtml += '      <th scope="col">First Name</th>\n'
+tableHtml += '      <th scope="col">Last Name</th>\n'
+tableHtml += '      <th scope="col">Age</th>\n'
+tableHtml += '      <th scope="col">Gender</th>\n'
+tableHtml += '      <th scope="col">BloodGroup</th>\n'
+tableHtml += '      <th scope="col">Address</th>\n'
+tableHtml += '      <th scope="col">Phnumber</th>\n'
+tableHtml += '    </tr>\n'
+tableHtml += '  </thead>\n'
+
+// Create table body with patient data
+tableHtml += '  <tbody>\n';
+data.forEach((patient, index) => {
+    tableHtml += `    <tr>\n`;
+    tableHtml += `      <td>${index + 1}</td>\n`;
+    tableHtml += `      <td>${patient.P_firstname}</td>\n`;
+    tableHtml += `      <td>${patient.P_lastname}</td>\n`;
+    tableHtml += `      <td>${patient.age}</td>\n`;
+    tableHtml += `      <td>${patient.P_gender}</td>\n`;
+    tableHtml += `      <td>${patient.BloodGroup}</td>\n`;
+    tableHtml += `      <td>${patient.P_address}</td>\n`;
+    tableHtml += `      <td>${patient.phnumber}</td>\n`;
+    tableHtml += `    </tr>\n`;
+});
+tableHtml += '  </tbody>\n</table>';
+return tableHtml;
+}
+
+// Function to load content dynamically
+function loadContentD(page) {
+    fetch(`/${page}`)
+        .then(response => response.json())
+        .then(data => {
+            // Generate HTML for the patients table
+            const tableHtmlD = generateDoctorTable(data);
+            // Append the table HTML to the content area
+            document.getElementById("doctors-table").innerHTML = tableHtmlD;
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+function generateDoctorTable(data) {
+    let tableHtmlD = '<table border="1">\n';
+    // Create table header
+    tableHtmlD += '  <thead>\n'
+    tableHtmlD += '    <tr>\n'
+    tableHtmlD += '      <th scope="col">#</th>\n'
+    tableHtmlD += '      <th scope="col">First Name</th>\n'
+    tableHtmlD += '      <th scope="col">Last Name</th>\n'
+    tableHtmlD += '      <th scope="col">Gender</th>\n'
+    tableHtmlD += '      <th scope="col">Specializaton</th>\n'
+    tableHtmlD += '      <th scope="col">Email</th>\n'
+    tableHtmlD += '    </tr>\n'
+    tableHtmlD += '  </thead>\n'
+    
+    // Create table body with patient data
+    tableHtmlD += '  <tbody>\n';
+    data.forEach((doctor, index) => {
+        tableHtmlD += `    <tr>\n`;
+        tableHtmlD += `      <td>${index + 1}</td>\n`;
+        tableHtmlD += `      <td>${doctor.D_firstname}</td>\n`;
+        tableHtmlD += `      <td>${doctor.D_lastname}</td>\n`;
+        tableHtmlD += `      <td>${doctor.D_gender}</td>\n`;
+        tableHtmlD += `      <td>${doctor.Specializaton}</td>\n`;
+        tableHtmlD += `      <td>${doctor.Email}</td>\n`;
+        tableHtmlD += `    </tr>\n`;
+    });
+    tableHtmlD += '  </tbody>\n</table>';
+    return tableHtmlD;
+    }
+    
