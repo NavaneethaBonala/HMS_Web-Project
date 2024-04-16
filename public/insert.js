@@ -8,3 +8,8 @@ function toggleForm1() {
     formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
     showData('DoctorForm')
 }
+function toggleForm2() {
+    const formContainer = document.getElementById('searchPid');
+    formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
+    showData('searchPid')
+}

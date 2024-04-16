@@ -276,37 +276,27 @@ app.get('/searchPatient', async (req, res) => {
             (error, results, fields) => {
                 if (error) {
                     console.error('Error searching for patient:', error);
-                    res.status(500).send('Error searching for patient');
+                    res.status(500).json({ error: 'Error searching for patient' });
                     return;
                 }
 
                 if (results.length > 0) {
-                    // const patient = results[0]; // Extract patient details
+                    const patient = results[0]; // Extract patient details
 
-                    // // Render patient details as HTML
-                    // const html = `
-                    //     <h2>Patient Details</h2>
-                    //     <p><strong>Patient ID:</strong> ${patient.P_id}</p>
-                    //     <p><strong>First Name:</strong> ${patient.P_firstname}</p>
-                    //     <p><strong>Last Name:</strong> ${patient.P_lastname}</p>
-                    //     <p><strong>Age:</strong> ${patient.age}</p>
-                    //     <p><strong>Gender:</strong> ${patient.P_gender}</p>
-                    //     <p><strong>Blood Group:</strong> ${patient.BloodGroup}</p>
-                    //     <p><strong>Address:</strong> ${patient.P_address}</p>
-                    //     <p><strong>Phone Number:</strong> ${patient.phnumber}</p>
-                    // `;
-                    // res.send(html);
-                    res.json(results);
+                    // Send patient details as JSON
+                    res.json(patient);
+
                 } else {
-                    res.status(404).send('Patient not found');
+                    res.status(404).json({ error: 'Patient not found' });
                 }
             }
         );
     } catch (error) {
         console.error('Error searching for patient:', error);
-        res.status(500).send('Error searching for patient');
+        res.status(500).json({ error: 'Error searching for patient' });
     }
 });
+
 
 
 // Start server

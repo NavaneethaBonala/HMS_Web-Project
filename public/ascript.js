@@ -17,10 +17,10 @@ function loadContentU(page) {
 }
 
 //   Function to generate HTML for the patients table
-  function generateUserTable(data) {
+function generateUserTable(data) {
     let tableHtmlU = `<div class="table-title"><h2>Users Information</h2></div>`;
 
-     tableHtmlU +=  `<table class="table ">`;
+    tableHtmlU += `<table class="table ">`;
     // Create table header
     // tableHtml += '<thead><tr><th>#</th><th>First Name</th><th>Last Name</th><th>Age</th><th>Gender</th></tr></thead>';
 
@@ -29,11 +29,11 @@ function loadContentU(page) {
     // Create table body with patient data
     tableHtmlU += '<tbody class="table-group-divider">';
     data.forEach((user, index) => {
-      tableHtmlU += `<tr><td>${index + 1}</td><td>${user.Username}</td><td>${user.Password}</td><td>${user.Usertype}</td></tr>`;
+        tableHtmlU += `<tr><td>${index + 1}</td><td>${user.Username}</td><td>${user.Password}</td><td>${user.Usertype}</td></tr>`;
     });
     tableHtmlU += '</tbody></table>';
     return tableHtmlU;
-  }
+}
 
 
 // ***************************************************************************************************
@@ -91,7 +91,7 @@ function loadContentD(page) {
 function generateDoctorTable(data) {
     let tableHtmlD = `<div class="table-title"><h2>Doctors Information</h2></div>`;
 
-     tableHtmlD += `<table class="table ">`;
+    tableHtmlD += `<table class="table ">`;
     // Create table header
     tableHtmlD += '  <thead>\n'
     tableHtmlD += '    <tr>\n'
@@ -103,7 +103,7 @@ function generateDoctorTable(data) {
     tableHtmlD += '      <th scope="col">Email</th>\n'
     tableHtmlD += '    </tr>\n'
     tableHtmlD += '  </thead>\n'
-    
+
     // Create table body with patient data
     tableHtmlD += '  <tbody class="table-group-divider">\n';
     data.forEach((doctor, index) => {
@@ -118,10 +118,10 @@ function generateDoctorTable(data) {
     });
     tableHtmlD += '  </tbody>\n</table>';
     return tableHtmlD;
-    }
-    
+}
 
-    
+
+
 // *************************************************************************
 // View Medical History 
 
@@ -143,10 +143,10 @@ function loadContentM(page) {
 
 
 //   Function to generate HTML for the patients table
-  function generateMedicalTable(data) {
+function generateMedicalTable(data) {
     let tableHtmlM = `<div class="table-title"><h2>List of Medical Histories</h2></div>`;
 
-    tableHtmlM +=  `<table class="table ">`;
+    tableHtmlM += `<table class="table ">`;
     // Create table header
     // tableHtml += '<thead><tr><th>#</th><th>First Name</th><th>Last Name</th><th>Age</th><th>Gender</th></tr></thead>';
 
@@ -159,12 +159,12 @@ function loadContentM(page) {
     });
     tableHtmlM += '</tbody></table>';
     return tableHtmlM;
-  }
+}
 
 // ***************************************************************
 
 
-  
+
 // View appointment History 
 
 // Function to load content dynamically
@@ -185,10 +185,10 @@ function loadContentA(page) {
 
 
 //   Function to generate HTML for the patients table
-  function generateappointmentTable(data) {
+function generateappointmentTable(data) {
     let tableHtmlA = `<div class="table-title"><h2>List of Appointments</h2></div>`;
 
-    tableHtmlA +=  `<table class="table ">`;
+    tableHtmlA += `<table class="table ">`;
     // Create table header
     // tableHtml += '<thead><tr><th>#</th><th>First Name</th><th>Last Name</th><th>Age</th><th>Gender</th></tr></thead>';
 
@@ -201,72 +201,83 @@ function loadContentA(page) {
     });
     tableHtmlA += '</tbody></table>';
     return tableHtmlA;
-  }
+}
 
 //   ------------------------------------------------------------------------------------------------
+
+// function loadContentSP(page) {
+//     fetch(`/${page}`)
+//         .then(response => response.json())
+//         .then(data => {
+//             const patient = data[0]; // Extract patient details
+//             // // Render patient details as HTML
+//             const html = `
+//                         <h2>Patient Details</h2>
+//                         <p><strong>Patient ID:</strong> ${patient.P_id}</p>
+//                         <p><strong>First Name:</strong> ${patient.P_firstname}</p>
+//                         <p><strong>Last Name:</strong> ${patient.P_lastname}</p>
+//                         <p><strong>Age:</strong> ${patient.age}</p>
+//                         <p><strong>Gender:</strong> ${patient.P_gender}</p>
+//                         <p><strong>Blood Group:</strong> ${patient.BloodGroup}</p>
+//                         <p><strong>Address:</strong> ${patient.P_address}</p>
+//                         <p><strong>Phone Number:</strong> ${patient.phnumber}</p>
+//                     `;
+//             document.getElementById("patientDetails").innerHTML = html;
+//             showData('patientDetails');
+
+
+//         })
+//         .catch(error => console.error('Error:', error));
+// }
+
 
 function loadContentSP(page) {
     fetch(`/${page}`)
-        .then(response => response.json())
-        .then(data => {
-           const patient = results[0]; // Extract patient details
+    document.getElementById('searchPid').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const patientId = document.getElementById('patientId').value;
 
-                    // Render patient details as HTML
-                    const html = `
-                        <h2>Patient Details</h2>
-                        <p><strong>Patient ID:</strong> ${patient.P_id}</p>
-                        <p><strong>First Name:</strong> ${patient.P_firstname}</p>
-                        <p><strong>Last Name:</strong> ${patient.P_lastname}</p>
-                        <p><strong>Age:</strong> ${patient.age}</p>
-                        <p><strong>Gender:</strong> ${patient.P_gender}</p>
-                        <p><strong>Blood Group:</strong> ${patient.BloodGroup}</p>
-                        <p><strong>Address:</strong> ${patient.P_address}</p>
-                        <p><strong>Phone Number:</strong> ${patient.phnumber}</p>
-                    `;
-                    document.getElementById("searchPatient").innerHTML = html;
-            showData('searchPatient');
+        // Make a GET request to retrieve patient details
+        const response = await fetch(`/searchPatient?patientId=${patientId}`);
+        const data = await response.json();
 
-
-        })
-        .catch(error => console.error('Error:', error));
+        if (response.ok) {
+            // Render patient details below the search bar
+            const detailsContainer = document.createElement('div');
+            detailsContainer.innerHTML = `
+            <h2>Patient Details</h2>
+            <p><strong>Patient ID:</strong> ${data.P_id}</p>
+            <p><strong>First Name:</strong> ${data.P_firstname}</p>
+            <p><strong>Last Name:</strong> ${data.P_lastname}</p>
+            <p><strong>Age:</strong> ${data.age}</p>
+            <p><strong>Gender:</strong> ${data.P_gender}</p>
+            <p><strong>Blood Group:</strong> ${data.BloodGroup}</p>
+            <p><strong>Address:</strong> ${data.P_address}</p>
+            <p><strong>Phone Number:</strong> ${data.phnumber}</p>
+        `;
+            document.getElementById('searchPid').appendChild(detailsContainer);
+        } else {
+            // Display error message if patient not found
+            alert(data.error);
+        }
+    });
 }
 
 
-
-//   Function to generate HTML for the patients table
-  function generateappointmentTable(data) {
-    let tableHtmlA = `<div class="table-title"><h2>List of Appointments</h2></div>`;
-
-    tableHtmlA +=  `<table class="table ">`;
-    // Create table header
-    // tableHtml += '<thead><tr><th>#</th><th>First Name</th><th>Last Name</th><th>Age</th><th>Gender</th></tr></thead>';
-
-    tableHtmlA += '<thead><tr><th scope="col">#</th><th scope="col">app_id</th><th scope="col">D_id</th><th scope="col">P_id</th><th scope="col">App_date</th><th scope="col">App_time</th><th scope="col">Status</th></tr></thead>';
-
-    // Create table body with patient data
-    tableHtmlA += '<tbody class="table-group-divider">';
-    data.forEach((app, index) => {
-        tableHtmlA += `<tr><td>${index + 1}</td><td>${app.app_id}</td><td>${app.D_id}</td><td>${app.P_id}</td><td>${app.App_date}</td><td>${app.App_time}</td><td>${app.Status}</td></tr>`;
-    });
-    tableHtmlA += '</tbody></table>';
-    return tableHtmlA;
-  }
-
-//   ------------------------------------------------------------------------------------------------
+    //   ------------------------------------------------------------------------------------------------
 
     function showData(dataToShow) {
-        const tables = ["users-table", "patients-table", "doctors-table", "medical-table", "appointment-table", "patientForm","DoctorForm" ,"searchPatient"];
-    
+        const tables = ["users-table", "patients-table", "doctors-table", "medical-table", "appointment-table", "patientForm", "DoctorForm", "searchPid"];
+
         // Hide all tables initially
         tables.forEach(table => {
             const element = document.getElementById(table);
             element.style.display = 'none';
         });
-    
+
         // Show the specified table or form
         const elementToShow = document.getElementById(dataToShow);
         if (elementToShow) {
             elementToShow.style.display = 'block';
         }
     }
-    

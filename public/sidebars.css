@@ -64,11 +64,12 @@ html {
 }
 
 main {
-  height: 100vh;
+  /* height: 100vh; */
   height: -webkit-fill-available;
   max-height: 100vh;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: visible;
+  
 }
 
 .dropdown-toggle {
@@ -155,6 +156,12 @@ h2 {
 
   width: 50%;
   height: 100%;
+  box-shadow: 
+  0 5px 5px 0 rgba(8, 182, 182, 0.432), /* top */
+  0 5px 5px 0 rgba(8, 182, 182, 0.432), /* bottom */
+  5px 0 5px 0 rgba(8, 182, 182, 0.432), /* right */
+  5px 0 5px 0 rgba(8, 182, 182, 0.432); /* left */
+    margin: 30px auto;
 }
 
 

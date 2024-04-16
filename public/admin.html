@@ -87,8 +87,8 @@
                 <!-- Corrected the typo here -->
                 <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Update Details</a>
                 </li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" 
-                  onclick="loadContentSP('searchPatient')">Search </a></li>
+                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                    onclick="toggleForm2()">Search </a></li>
               </ul>
             </div>
           </li>
@@ -199,29 +199,39 @@
   </div>
 
   <div class="content table">
-    <!-- <h2>view All medical history</h2> -->
+    <!-- <h2>view All appointment history</h2> -->
     <div id="appointment-table">
     </div>
   </div>
+
   <div class="content table">
+    <div id="patientDetails">
+      <!-- Patient details will be rendered here -->
+    </div>
+  </div>
+
+
+
+  <div>
     <!-- <h2>view All medical history</h2> -->
-    <h1>Search Patient Details</h1>
-    <form action="/searchPatient" method="GET">
+    <main class="form-signin ">
+    <form action="/searchPatient" method="GET" id="searchPid" style="display: none;">
+      <div class="container   p-3 bg-body ">
+        <h1>Search Patient Details</h1>
         <label for="patientId">Enter Patient ID:</label>
         <input type="text" id="patientId" name="patientId" required>
         <button type="submit">Search</button>
+      </div>
     </form>
-
-    <div id="patientDetails">
-        <!-- Patient details will be rendered here -->
-    </div>
+    </main>
   </div>
 
   <div>
     <main class="form-signin ">
-      <div class=" container  shadow p-3  m-auto bg-body ">
-        <form action="/addPatient" method="post" id="patientForm" style="display: none;">
-          <!-- <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+
+      <form action="/addPatient" method="post" id="patientForm" style="display: none;">
+        <!-- <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+        <div class=" container p-3 bg-body ">
           <h1 class="h3 mb-3 fw-normal"> Add Patient</h1>
 
           <div class="input-group mb-3">
@@ -304,18 +314,19 @@
           <div class="d-grid gap-2 col-6 mx-auto">
             <button class=" btn btn-outline btn-md" type="submit">submit</button>
           </div>
-      </div>
+        </div>
 
       </form>
-  </div>
-  </main>
+
+    </main>
   </div>
 
   <div>
     <main class="form-signin ">
-      <div class=" container  shadow p-3  m-auto bg-body ">
-        <form action="/addDoctor" method="post" id="DoctorForm" style="display: none;">
-          <!-- <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+
+      <form action="/addDoctor" method="post" id="DoctorForm" style="display: none;">
+        <!-- <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+        <div class=" container  shadow p-3  bg-body ">
           <h1 class="h3 mb-3 fw-normal"> Add Doctor</h1>
 
           <div class="input-group mb-3">
@@ -367,12 +378,13 @@
           <div class="d-grid gap-2 col-6 mx-auto">
             <button class=" btn btn-outline btn-md" type="submit">submit</button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
+
     </main>
   </div>
 
- 
+
 
   <script src="ascript.js"></script>
   <script src="insert.js"></script>
