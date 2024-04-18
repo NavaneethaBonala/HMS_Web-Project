@@ -54,7 +54,10 @@ div {
 }
 body {
     font-family: Lato-Regular, Arial, sans-serif;
-    letter-spacing: .1px;
+    /* letter-spacing: .1px; */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .flx-wrap {
@@ -128,6 +131,13 @@ input[type="radio" i] {
 
 footer {
     margin-top: auto;
+    
+}
+li {
+    display: inline-block;
+    /* Display items horizontally */
+    margin-right: 10px;
+    /* Add some spacing between items */
 }
 
 
