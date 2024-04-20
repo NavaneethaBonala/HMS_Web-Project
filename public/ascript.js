@@ -68,6 +68,36 @@ function generatePatientsTable(data) {
     return tableHtml;
 }
 
+// ******************************************************************************************
+// practice for search
+function loadContentSP(page) {
+    fetch(`/${page}`)
+        .then(response => response.json())
+        .then(data => {
+            // Generate HTML for the patients table
+            const tableHtml = generatePatientsTable(data);
+            // Append the table HTML to the content area
+            document.getElementById("patientDetails").innerHTML = tableHtml;
+            showData('patientDetails');
+
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function generatePatientsTable(data) {
+    let tableHtml = `<div class="table-title"><h2>Patients Information</h2></div>`;
+    tableHtml += `<table class="table ">`;
+    // Create table header
+    tableHtml += '<thead><tr><th scope="col">P_id</th><th scope="col">First Name</th><th scope="col">Last Name</th><th scope="col">Age</th><th scope="col">Gender</th><th scope="col">Blood Group</th><th scope="col">Address</th><th scope="col">Phone Number</th></tr></thead>';
+    // Create table body with patient data
+    tableHtml += '<tbody class="table-group-divider">';
+    data.forEach((patient, index) => {
+        tableHtml += `<tr><td>${patient.P_id}</td><td>${patient.P_firstname}</td><td>${patient.P_lastname}</td><td>${patient.age}</td><td>${patient.P_gender}</td><td>${patient.BloodGroup}</td><td>${patient.P_address}</td><td>${patient.phnumber}</td></tr>`;
+    });
+    tableHtml += '</tbody></table>';
+    return tableHtml;
+}
+
 
 
 
@@ -267,7 +297,7 @@ function loadContentSP(page) {
     //   ------------------------------------------------------------------------------------------------
 
     function showData(dataToShow) {
-        const tables = ["users-table", "patients-table", "doctors-table", "medical-table", "appointment-table", "patientForm", "DoctorForm", "searchPid"];
+        const tables = ["users-table", "patients-table", "doctors-table", "medical-table", "appointment-table", "patientForm", "DoctorForm", "patientDetails"];
 
         // Hide all tables initially
         tables.forEach(table => {

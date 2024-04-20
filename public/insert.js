@@ -11,5 +11,6 @@ function toggleForm1() {
 function toggleForm2() {
     const formContainer = document.getElementById('searchPid');
     formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
-    showData('searchPid')
+    // showData('searchPid')
+    loadContentSP('')
 }
