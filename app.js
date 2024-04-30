@@ -34,6 +34,11 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+// Routes
+// app.get('/', (req, res) => {
+//     res.sendFile(__dirname + '/public/login.html');
+//   });
+
 app.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
